@@ -14,7 +14,6 @@ export default class ProfileStore {
   }
 
   get isCurrentUser() {
-    
     if (store.userStore.user && this.profile) {
       return store.userStore.user.username === this.profile.username;
     }
@@ -35,10 +34,10 @@ export default class ProfileStore {
     }
   };
 
-  updateProfile = async (profile: Partial <Profile>) => {
+  updateProfile = async (profile: Partial<Profile>) => {
     this.loading = true;
     try {
-      await agent.Profiles.edit(profile);
+      await agent.Profiles.updateProfile(profile);
       runInAction(() => {
         if (
           profile.displayName &&
@@ -47,7 +46,6 @@ export default class ProfileStore {
           store.userStore.setDisplayName(profile.displayName);
         }
         this.profile = { ...this.profile, ...(profile as Profile) };
-        
         this.loading = false;
       });
     } catch (error) {
@@ -55,8 +53,6 @@ export default class ProfileStore {
       runInAction(() => (this.loading = false));
     }
   };
-
-  
 
   uploadPhoto = async (file: Blob) => {
     this.uploading = true;

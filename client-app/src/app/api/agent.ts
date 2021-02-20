@@ -90,18 +90,17 @@ const Account = {
 const Profiles = {
     get: (username: string) => requests.get<Profile>(`/profiles/${username}`),
     uploadPhoto: (file: Blob) => {
-        let formData = new FormData();
-        formData.append('File', file);
-        return axios.post<Photo>('photos', formData, {
-            headers: {'Content-type': 'multipart/form-data'}
-        })
+    let formData = new FormData();
+    formData.append('File', file);
+    return axios.post<Photo>('photos', formData, {
+    headers: {'Content-type': 'multipart/form-data'}
+    })
     },
-
     setMainPhoto: (id: string) => requests.post(`/photos/${id}/setMain`, {}),
     deletePhoto: (id: string) => requests.del(`/photos/${id}`),
-    edit:(profile: Partial <Profile>) => requests.put<Profile>(`/profiles/${profile.username}`, profile)
-}
-
+    updateProfile: (profile: Partial<Profile>) => requests.put(`/profiles`,
+   profile)
+   }
 
 
 const agent = {

@@ -1,4 +1,3 @@
-import { toJS } from "mobx";
 import { User } from "./user";
 
 export interface Profile {

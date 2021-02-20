@@ -25,7 +25,7 @@ export default observer(function ProfilePage () {
                 { profile && 
                 <>
                     <ProfileHeader profile={profile} />
-                    <ProfileContent profile={profile} username={username} />
+                    <ProfileContent profile={profile} />
                 </>
                 }
                
