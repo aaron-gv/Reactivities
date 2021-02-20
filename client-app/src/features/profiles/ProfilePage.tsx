@@ -14,15 +14,18 @@ export default observer(function ProfilePage () {
 
     useEffect(() => {
         loadProfile(username);
+        
     }, [loadProfile, username]);
     if (loadingProfile) return <LoadingComponent content='Loading profile...' />
+
     return (
         <Grid>
             <Grid.Column width={16}>
+                
                 { profile && 
                 <>
                     <ProfileHeader profile={profile} />
-                    <ProfileContent profile={profile} />
+                    <ProfileContent profile={profile} username={username} />
                 </>
                 }
                
