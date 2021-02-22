@@ -1,20 +1,15 @@
 using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
-using Domain;
 
-namespace Application.Profiles
+namespace Domain
 {
-    public class UserActivityDto
+    public class UserActivity
     {
         public Guid Id { get; set; }
         public string Title { get; set; }
         public string Category { get; set; }
         public DateTime Date { get; set; }
-        
-        [JsonIgnore]
         public string HostUsername { get; set; }
-        [JsonIgnore]
         public ICollection<ActivityAttendee> Attendees {get; set;} = new List<ActivityAttendee>();
     }
 }
